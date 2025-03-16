@@ -1,0 +1,22 @@
+# Игнорируем скомпилированный JS-код
+dist/
+**/dist/
+
+# Игнорируем зависимости
+node_modules/
+**/node_modules/
+
+# Игнорируем настройки редактора (VS Code, JetBrains)
+.vscode/
+.idea/
+
+# Игнорируем файлы логов
+**/logs/
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Игнорируем временные файлы системы
+**/.DS_Store
+**/Thumbs.db
