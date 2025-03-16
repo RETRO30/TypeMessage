@@ -1,10 +1,9 @@
-version: '3'
+version: '3.8'
 
 services:
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: backend
     expose:
       - "8000:8000"

@@ -1,13 +1,13 @@
-FROM node:18-alpine
+FROM node:22.13.1-alpine
 
-WORKDIR /app
+USER node
+WORKDIR /home/node/app
+
+COPY package.json .
+COPY package-lock.json .
+
+RUN npm ci
 
 COPY . .
 
-RUN npm install
-
-EXPOSE 8000
-
-RUN npx tsc
-
-CMD ["node", "dist/index.js"]
+CMD ["npm", "start"]
