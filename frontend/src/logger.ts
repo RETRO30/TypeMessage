@@ -7,10 +7,10 @@ const logger = winston.createLogger({
             info.level = info.level.toUpperCase();
             return info;
         })(),
-        winston.format.colorize( {all: true} ),
-        winston.format.timestamp({format: 'DD.MM.YYYY HH:mm:ss.SSS'}),
+        winston.format.colorize(),
+        winston.format.timestamp({format: 'DD.MM.YYYY HH:mm:ss.SSSS'}),
         winston.format.printf(({timestamp, level, message }) => {
-            return `${timestamp}|${level}| ${message}`
+            return `${timestamp} | ${level} | ${message}`
         })
     ),
     transports: [

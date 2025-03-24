@@ -6,15 +6,27 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
+      PORT: ${BACKEND_PORT}
       DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}"
-    expose:
+    ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     depends_on:
       database:
         condition: service_healthy
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      PORT: ${FRONTEND_PORT}
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    depends_on:
+      - backend
   database:
     image: postgres:17
     restart: always
+    user: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

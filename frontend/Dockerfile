@@ -10,6 +10,5 @@ RUN npm ci
 
 COPY ./src ./src
 COPY tsconfig.json .
-COPY ./prisma ./prisma
 
 CMD ["npm", "start"]
